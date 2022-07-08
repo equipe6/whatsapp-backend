@@ -1,5 +1,6 @@
 package br.edu.unisinos.whatsapp.controllers;
 
+import br.edu.unisinos.whatsapp.services.WebhookMessageService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 public class Webhook {
 
+    private final WebhookMessageService webhookMessageService;
 
     @RequestMapping(value = "/message", method = RequestMethod.POST, //
             consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -23,6 +25,8 @@ public class Webhook {
     public String message(HttpEntity<String> httpEntity) {
         String json = httpEntity.getBody();
         log.info(json);
+
+        webhookMessageService.save(json);
 
         return "";
     }
@@ -33,6 +37,8 @@ public class Webhook {
     public String status(HttpEntity<String> httpEntity) {
         String json = httpEntity.getBody();
         log.info(json);
+
+        webhookMessageService.save(json);
 
         return "";
     }
