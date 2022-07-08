@@ -19,6 +19,7 @@
         <springfox-swagger.version>2.9.2</springfox-swagger.version>
         <apache-commons-lang3.version>3.9</apache-commons-lang3.version>
         <jacoco.version>0.8.8</jacoco.version>
+        <zenvia-api.version>1.1.0</zenvia-api.version>
 
         <sonar.projectKey>equipe6_whatsapp-backend</sonar.projectKey>
         <sonar.organization>equipe6</sonar.organization>
@@ -117,9 +118,15 @@
         </dependency>
 
         <dependency>
+            <groupId>com.zenvia</groupId>
+            <artifactId>zenvia-api-sdk-client-spring</artifactId>
+            <version>${zenvia-api.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.modelmapper</groupId>
             <artifactId>modelmapper</artifactId>
-            <version>2.3.2</version>
+            <version>3.1.0</version>
         </dependency>
 
         <dependency>

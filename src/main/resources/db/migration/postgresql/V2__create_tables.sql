@@ -11,6 +11,8 @@ CREATE TABLE public."message"
     message_to           character varying(50)   NOT NULL,
     message_from         character varying(50)   NOT NULL,
     message_body         character varying(1000) NOT NULL,
+    direction            character varying(3)   NOT NULL,
+    channel              character varying(100)  NOT NULL,
     create_date_time     timestamp               NOT NULL,
     CONSTRAINT  message_pkey  PRIMARY KEY (id)
 );

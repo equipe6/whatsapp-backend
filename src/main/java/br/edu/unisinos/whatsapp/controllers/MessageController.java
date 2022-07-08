@@ -20,11 +20,13 @@ public class MessageController {
     private final MessageService messageService;
 
     @RequestMapping(value = "/send", method = RequestMethod.POST, //
-            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+            consumes = MediaType.TEXT_PLAIN_VALUE, produces = MediaType.TEXT_PLAIN_VALUE)
     @ResponseBody
     public String send(HttpEntity<String> httpEntity) {
-        String json = httpEntity.getBody();
-        log.info(json);
+        String message = httpEntity.getBody();
+        log.info(message);
+
+        messageService.sendWhatsappMessage("deluxe-ankle", "5551980175570", message);
 
         return "";
     }

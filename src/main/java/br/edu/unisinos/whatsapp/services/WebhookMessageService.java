@@ -22,6 +22,7 @@ public class WebhookMessageService {
         return webhookMessageRepository.save(webhookMessage);
     }
 
+
     public WebhookMessage save(WebhookMessage webhookMessage) {
         return webhookMessageRepository.save(webhookMessage);
     }

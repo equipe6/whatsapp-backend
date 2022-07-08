@@ -1,6 +1,7 @@
 package br.edu.unisinos.whatsapp.entities;
 
 
+import br.edu.unisinos.whatsapp.enums.DirectionEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -34,8 +35,28 @@ public class Message implements Serializable {
     @Column(name = "message_body", nullable = false)
     private String body;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "direction", nullable = false)
+    private DirectionEnum direction;
+
+    @Column(name = "channel", nullable = false)
+    private String channel;
+
     @CreationTimestamp
     @Column(name = "create_date_time", nullable = false)
     private LocalDateTime createDateTime;
+
+    public String getChannel() {
+        if (direction == null) {
+            this.channel = null;
+            return null;
+        }
+        if (DirectionEnum.IN.equals(direction)) {
+            this.channel = "" + to + from;
+        } else {
+            this.channel = "" + from + to;
+        }
+        return this.channel;
+    }
 
 }

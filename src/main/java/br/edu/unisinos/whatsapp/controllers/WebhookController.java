@@ -1,6 +1,10 @@
 package br.edu.unisinos.whatsapp.controllers;
 
+import br.edu.unisinos.whatsapp.enums.DirectionEnum;
+import br.edu.unisinos.whatsapp.services.MessageService;
 import br.edu.unisinos.whatsapp.services.WebhookMessageService;
+import com.zenvia.api.sdk.webhook.MessageEvent;
+import com.zenvia.api.sdk.webhook.MessageStatusEvent;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -19,27 +23,35 @@ public class WebhookController {
 
     private final WebhookMessageService webhookMessageService;
 
+    private final MessageService messageService;
+
     @RequestMapping(value = "/message", method = RequestMethod.POST, //
             consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String message(HttpEntity<String> httpEntity) {
-        String json = httpEntity.getBody();
-        log.info(json);
+    public String message(HttpEntity<MessageEvent> httpEntity) {
+        MessageEvent messageEvent = httpEntity.getBody();
+        if (messageEvent != null) {
+            String json = messageEvent.toString();
 
-        webhookMessageService.save(json);
+            log.info(json);
+            webhookMessageService.save(json);
 
+            messageService.save(messageEvent, DirectionEnum.IN);
+        }
         return "";
     }
 
     @RequestMapping(value = "/status", method = RequestMethod.POST, //
             consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String status(HttpEntity<String> httpEntity) {
-        String json = httpEntity.getBody();
-        log.info(json);
+    public String status(HttpEntity<MessageStatusEvent> httpEntity) {
+        MessageStatusEvent messageStatusEvent = httpEntity.getBody();
+        if (messageStatusEvent != null) {
+            String json = messageStatusEvent.toString();
 
-        webhookMessageService.save(json);
-
+            log.info(json);
+            webhookMessageService.save(json);
+        }
         return "";
     }
 }
