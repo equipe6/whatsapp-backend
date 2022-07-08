@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/webhook")
 @RequiredArgsConstructor(access = AccessLevel.PACKAGE)
-public class Webhook {
+public class WebhookController {
 
     private final WebhookMessageService webhookMessageService;
 
