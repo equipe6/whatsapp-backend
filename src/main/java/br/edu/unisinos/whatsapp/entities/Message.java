@@ -4,7 +4,6 @@ package br.edu.unisinos.whatsapp.entities;
 import br.edu.unisinos.whatsapp.enums.DirectionEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -13,12 +12,15 @@ import java.time.LocalDateTime;
 
 @Entity
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "message", schema = "public")
 public class Message implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
+    public Message() {
+        this.buildChannel();
+    }
 
     @Id
     @SequenceGenerator(name = "message_entity_seq", sequenceName = "message_seq", allocationSize = 1)
@@ -46,10 +48,9 @@ public class Message implements Serializable {
     @Column(name = "create_date_time", nullable = false)
     private LocalDateTime createDateTime;
 
-    public String getChannel() {
+    public String buildChannel() {
         if (direction == null) {
-            this.channel = null;
-            return null;
+            return this.channel;
         }
         if (DirectionEnum.IN.equals(direction)) {
             this.channel = "" + to + from;
@@ -58,5 +59,10 @@ public class Message implements Serializable {
         }
         return this.channel;
     }
+
+    public String getChannel() {
+        return this.buildChannel();
+    }
+
 
 }
