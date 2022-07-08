@@ -51,9 +51,9 @@ public class Message implements Serializable {
             return this.channel;
         }
         if (DirectionEnum.IN.equals(direction)) {
-            this.channel = "" + to + from;
+            this.channel = "" + to + "-" + from;
         } else {
-            this.channel = "" + from + to;
+            this.channel = "" + from + "-" + to;
         }
         return this.channel;
     }

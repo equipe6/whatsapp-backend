@@ -17,6 +17,8 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Log4j2
 @Service
 @Transactional
@@ -73,5 +75,9 @@ public class MessageService {
         }
 
         return this.save(from, to, messageText, DirectionEnum.OUT);
+    }
+
+    public List<Message> listMessagesByChannel(String channel) {
+        return this.messageRepository.findAllByChannelOrderByCreateDateTimeAsc(channel);
     }
 }
