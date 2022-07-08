@@ -67,9 +67,9 @@ jobs:
           CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
         run: bash <(curl -Ls https://coverage.codacy.com/get.sh) report
 
-      - name: Deploy to Heroku
-        uses: AkhileshNS/heroku-deploy@v3.12.12
-        with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "${{ env.BRANCH_NAME }}-demo-whatsapp-backend"
-          heroku_email: "leandro@frekele.org"
+      #- name: Deploy to Heroku
+      #  uses: AkhileshNS/heroku-deploy@v3.12.12
+      #  with:
+      #    heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+      #    heroku_app_name: "${{ env.BRANCH_NAME }}-demo-whatsapp-backend"
+      #    heroku_email: "leandro@frekele.org"
