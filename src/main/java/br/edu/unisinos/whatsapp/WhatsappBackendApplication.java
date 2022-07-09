@@ -22,6 +22,7 @@ public class WhatsappBackendApplication implements Serializable {
         SpringApplication.run(WhatsappBackendApplication.class, args);
     }
 
+    @Generated
     static void showAppVersionInfo() {
         Logger logger = LoggerFactory.getLogger(WhatsappBackendApplication.class);
         logger.info("");

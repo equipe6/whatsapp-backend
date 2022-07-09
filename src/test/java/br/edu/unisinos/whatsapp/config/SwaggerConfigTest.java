@@ -5,6 +5,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.BDDMockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 @ExtendWith(MockitoExtension.class)
 class SwaggerConfigTest {
 
@@ -29,7 +31,10 @@ class SwaggerConfigTest {
 
     @Test
     void testCustomOpenAPI() throws Exception {
-        this.swaggerConfig.customOpenAPI("teste", "1.0.1");
+        var description = "teste";
+        var appVersion = "1.0.1";
+        var result = this.swaggerConfig.customOpenAPI(description, appVersion);
+        assertNotNull(result);
     }
 
 }
