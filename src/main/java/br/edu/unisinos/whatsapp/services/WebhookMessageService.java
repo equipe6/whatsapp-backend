@@ -20,9 +20,9 @@ public class WebhookMessageService implements Serializable {
 
     private final transient WebhookMessageRepository webhookMessageRepository;
 
-    public WebhookMessage save(String StrWebhookMessage) {
+    public WebhookMessage save(String strWebhookMessage) {
         WebhookMessage webhookMessage = new WebhookMessage();
-        webhookMessage.setContentBody(StrWebhookMessage);
+        webhookMessage.setContentBody(strWebhookMessage);
         return this.save(webhookMessage);
     }
 
