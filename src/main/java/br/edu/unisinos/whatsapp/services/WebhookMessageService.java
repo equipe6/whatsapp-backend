@@ -18,7 +18,7 @@ public class WebhookMessageService implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private final WebhookMessageRepository webhookMessageRepository;
+    private final transient WebhookMessageRepository webhookMessageRepository;
 
     public WebhookMessage save(String StrWebhookMessage) {
         WebhookMessage webhookMessage = new WebhookMessage();

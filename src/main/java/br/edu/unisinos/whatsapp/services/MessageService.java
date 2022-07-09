@@ -28,8 +28,7 @@ public class MessageService implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private final MessageRepository messageRepository;
-
+    private final transient MessageRepository messageRepository;
 
     public Message save(MessageEvent messageEvent, DirectionEnum direction) {
         Message message = new Message();
@@ -55,7 +54,6 @@ public class MessageService implements Serializable {
         message.buildChannel();
         return this.messageRepository.save(message);
     }
-
 
     public Message sendWhatsappMessage(String from, String to, String messageText) {
         try (Client client = this.buildZenviaClient()) {
