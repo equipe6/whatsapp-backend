@@ -19,3 +19,11 @@
 #### Front-end Repository
 - https://github.com/equipe6/whatsapp-frontend
  
+
+### Integrantes - Grupo: 6
+- Giulia Soares Rego dos Santos
+- Lisiane de Anflor Ferreira
+- Nícolas Savaris Ludwig
+- Leandro Kersting de Freitas
+- Jonhson Rafael dos Santos
+
