@@ -16,6 +16,8 @@ import java.io.Serializable;
 @RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 public class SwaggerConfig implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
     @Bean
     public OpenAPI customOpenAPI(@Value("${info.app.description}") String appDescription, @Value("${info.app.version}") String appVersion) {
         return new OpenAPI()

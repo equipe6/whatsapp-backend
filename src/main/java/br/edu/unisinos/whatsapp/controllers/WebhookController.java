@@ -15,11 +15,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.Serializable;
+
 @Log4j2
 @RestController
 @RequestMapping("/webhook")
 @RequiredArgsConstructor(access = AccessLevel.PACKAGE)
-public class WebhookController {
+public class WebhookController implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private final WebhookMessageService webhookMessageService;
 

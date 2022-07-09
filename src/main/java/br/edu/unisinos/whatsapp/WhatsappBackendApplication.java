@@ -5,9 +5,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
-public class WhatsappBackendApplication {
+import java.io.Serializable;
 
+@SpringBootApplication
+public class WhatsappBackendApplication implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     public static void main(String[] args) {
         showAppVersionInfo();

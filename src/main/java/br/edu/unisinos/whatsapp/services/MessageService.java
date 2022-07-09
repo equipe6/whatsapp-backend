@@ -17,13 +17,16 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Log4j2
 @Service
 @Transactional
 @RequiredArgsConstructor(access = AccessLevel.PACKAGE)
-public class MessageService {
+public class MessageService implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private final MessageRepository messageRepository;
 
@@ -75,5 +78,9 @@ public class MessageService {
 
     public List<Message> listMessagesByChannel(String channel) {
         return this.messageRepository.findAllByChannelOrderByCreateDateTimeAsc(channel);
+    }
+
+    public List<String> listAllChannel() {
+        return this.messageRepository.findDistinctChannel();
     }
 }
