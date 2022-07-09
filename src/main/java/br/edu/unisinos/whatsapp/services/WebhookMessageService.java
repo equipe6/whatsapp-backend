@@ -23,7 +23,7 @@ public class WebhookMessageService implements Serializable {
     public WebhookMessage save(String StrWebhookMessage) {
         WebhookMessage webhookMessage = new WebhookMessage();
         webhookMessage.setContentBody(StrWebhookMessage);
-        return webhookMessageRepository.save(webhookMessage);
+        return this.save(webhookMessage);
     }
 
     public WebhookMessage save(WebhookMessage webhookMessage) {

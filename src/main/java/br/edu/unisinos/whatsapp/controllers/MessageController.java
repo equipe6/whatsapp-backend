@@ -24,11 +24,10 @@ public class MessageController implements Serializable {
 
     @PostMapping(value = "/send/{phoneNumber}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String send(@RequestBody MessageSendDto httpEntity, @PathVariable("phoneNumber") String phoneNumber) {
-        MessageSendDto dto = httpEntity;
-        log.info(dto);
+    public String send(@RequestBody MessageSendDto messageSendDto, @PathVariable("phoneNumber") String phoneNumber) {
+        log.info(messageSendDto);
 
-        messageService.sendWhatsappMessage("deluxe-ankle", phoneNumber, dto.getMessage());
+        messageService.sendWhatsappMessage("deluxe-ankle", phoneNumber, messageSendDto.getMessage());
 
         return "";
     }

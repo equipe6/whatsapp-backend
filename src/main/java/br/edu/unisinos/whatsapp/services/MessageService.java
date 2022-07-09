@@ -58,7 +58,7 @@ public class MessageService implements Serializable {
 
 
     public Message sendWhatsappMessage(String from, String to, String messageText) {
-        try (Client client = new Client("os-SvXSoEHI3ECnG5-kxn1EX11qrwexxURhI")) {
+        try (Client client = this.buildZenviaClient()) {
 
             Channel whatsapp = client.getChannel("whatsapp");
             Content content = new TextContent(messageText);
@@ -68,8 +68,10 @@ public class MessageService implements Serializable {
             } catch (UnsuccessfulRequestException exception) {
                 ErrorResponse response = exception.body;
                 log.error(response);
+                throw exception;
             } catch (ApiException exception) {
                 log.error(exception);
+                throw exception;
             }
         }
 
@@ -82,5 +84,9 @@ public class MessageService implements Serializable {
 
     public List<String> listAllChannel() {
         return this.messageRepository.findDistinctChannel();
+    }
+
+    Client buildZenviaClient() {
+        return new Client("os-SvXSoEHI3ECnG5-kxn1EX11qrwexxURhI");
     }
 }
