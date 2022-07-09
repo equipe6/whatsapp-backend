@@ -25,6 +25,8 @@
         <sonar.projectKey>equipe6_whatsapp-backend</sonar.projectKey>
         <sonar.organization>equipe6</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <sonar.coverage.exclusions>**src/test/**</sonar.coverage.exclusions>
+        <sonar.exclusions>**src/test/**</sonar.exclusions>
     </properties>
 
     <dependencies>
