@@ -1,5 +1,8 @@
 package br.edu.unisinos.whatsapp;
 
+import lombok.AccessLevel;
+import lombok.Generated;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -8,16 +11,18 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.io.Serializable;
 
 @SpringBootApplication
+@RequiredArgsConstructor(access = AccessLevel.PACKAGE)
 public class WhatsappBackendApplication implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @Generated
     public static void main(String[] args) {
         showAppVersionInfo();
         SpringApplication.run(WhatsappBackendApplication.class, args);
     }
 
-    private static void showAppVersionInfo() {
+    static void showAppVersionInfo() {
         Logger logger = LoggerFactory.getLogger(WhatsappBackendApplication.class);
         logger.info("");
         logger.info("########################################################################################");
