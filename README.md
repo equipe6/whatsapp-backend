@@ -12,12 +12,8 @@
 ## Back-end API Spring Boot v2
 
 
-### Demo API
-- https://demo-whatsapp-backend.herokuapp.com/api
-
-#### Front-end Repository
-- https://github.com/equipe6/whatsapp-frontend
- 
+### Demo API - Swagger
+- https://demo-whatsapp-backend.herokuapp.com/api/swagger-ui/index.html
 
 ### Integrantes - Grupo: 6
 - Giulia Soares Rego dos Santos
@@ -25,4 +21,3 @@
 - Nícolas Savaris Ludwig
 - Leandro Kersting de Freitas
 - Jonhson Rafael dos Santos
-
