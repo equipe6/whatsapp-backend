@@ -19,6 +19,7 @@
         <springfox-swagger.version>2.9.2</springfox-swagger.version>
         <apache-commons-lang3.version>3.9</apache-commons-lang3.version>
         <jacoco.version>0.8.8</jacoco.version>
+        <springdoc.version>1.6.9</springdoc.version>
         <zenvia-api.version>1.1.0</zenvia-api.version>
 
         <sonar.projectKey>equipe6_whatsapp-backend</sonar.projectKey>
@@ -102,19 +103,9 @@
 
         <!-- Swagger and Swagger UI -->
         <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-            <version>${springfox-swagger.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-bean-validators</artifactId>
-            <version>${springfox-swagger.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-            <version>${springfox-swagger.version}</version>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+            <version>${springdoc.version}</version>
         </dependency>
 
         <dependency>
