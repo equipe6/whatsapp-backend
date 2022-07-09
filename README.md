@@ -18,6 +18,9 @@ Após receber a mensagem de retorno, já estará apto a utilizar a API.
 ### Demo API - Swagger
 - https://demo-whatsapp-backend.herokuapp.com/api/swagger-ui/index.html
 
+### API Docs Zenvia
+- https://zenvia.github.io/zenvia-openapi-spec/v2/#section/WhatsApp-sender-and-recipient
+
 ### Integrantes - Grupo: 6
 - Giulia Soares Rego dos Santos
 - Lisiane de Anflor Ferreira
