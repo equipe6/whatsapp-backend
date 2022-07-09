@@ -27,8 +27,7 @@ public class WebhookController implements Serializable {
 
     @PostMapping(value = "/message", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String message(@RequestBody MessageEvent httpEntity) {
-        MessageEvent messageEvent = httpEntity;
+    public String message(@RequestBody MessageEvent messageEvent) {
         if (messageEvent != null) {
             String json = messageEvent.toString();
 
@@ -42,8 +41,7 @@ public class WebhookController implements Serializable {
 
     @PostMapping(value = "/status", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String status(@RequestBody MessageStatusEvent httpEntity) {
-        MessageStatusEvent messageStatusEvent = httpEntity;
+    public String status(@RequestBody MessageStatusEvent messageStatusEvent) {
         if (messageStatusEvent != null) {
             String json = messageStatusEvent.toString();
 
