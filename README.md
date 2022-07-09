@@ -11,6 +11,9 @@
 
 ## Back-end API Spring Boot v2
 
+Para ativar o sandbox para o smartphone, enviar a mensagem: **deluxe-ankle** para o numero: **+55 11 4837-7404**.
+
+Após receber a mensagem de retorno, já estará apto a utilizar a API.
 
 ### Demo API - Swagger
 - https://demo-whatsapp-backend.herokuapp.com/api/swagger-ui/index.html
