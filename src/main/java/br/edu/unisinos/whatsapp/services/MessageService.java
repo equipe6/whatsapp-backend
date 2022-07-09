@@ -55,23 +55,19 @@ public class MessageService {
 
 
     public Message sendWhatsappMessage(String from, String to, String messageText) {
-        // Initialization with your API token (x-api-token)
-        Client client = new Client("os-SvXSoEHI3ECnG5-kxn1EX11qrwexxURhI");
+        try (Client client = new Client("os-SvXSoEHI3ECnG5-kxn1EX11qrwexxURhI")) {
 
-        // Choosing the channel
-        Channel whatsapp = client.getChannel("whatsapp");
+            Channel whatsapp = client.getChannel("whatsapp");
+            Content content = new TextContent(messageText);
 
-        // Creating a text content
-        Content content = new TextContent(messageText);
-
-        try {
-            com.zenvia.api.sdk.messages.Message response = whatsapp.sendMessage(from, to, content);
-            // do something here
-        } catch (UnsuccessfulRequestException exception) {
-            ErrorResponse response = exception.body;
-            // handle error here
-        } catch (ApiException exception) {
-            // handle error here
+            try {
+                whatsapp.sendMessage(from, to, content);
+            } catch (UnsuccessfulRequestException exception) {
+                ErrorResponse response = exception.body;
+                log.error(response);
+            } catch (ApiException exception) {
+                log.error(exception);
+            }
         }
 
         return this.save(from, to, messageText, DirectionEnum.OUT);
