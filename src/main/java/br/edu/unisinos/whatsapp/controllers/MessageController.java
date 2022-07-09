@@ -6,7 +6,6 @@ import br.edu.unisinos.whatsapp.services.MessageService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,8 +24,8 @@ public class MessageController implements Serializable {
 
     @PostMapping(value = "/send/{phoneNumber}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String send(HttpEntity<MessageSendDto> httpEntity, @PathVariable("phoneNumber") String phoneNumber) {
-        MessageSendDto dto = httpEntity.getBody();
+    public String send(@RequestBody MessageSendDto httpEntity, @PathVariable("phoneNumber") String phoneNumber) {
+        MessageSendDto dto = httpEntity;
         log.info(dto);
 
         messageService.sendWhatsappMessage("deluxe-ankle", phoneNumber, dto.getMessage());

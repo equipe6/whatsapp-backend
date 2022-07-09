@@ -8,12 +8,8 @@ import com.zenvia.api.sdk.webhook.MessageStatusEvent;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.Serializable;
 
@@ -29,11 +25,10 @@ public class WebhookController implements Serializable {
 
     private final MessageService messageService;
 
-    @RequestMapping(value = "/message", method = RequestMethod.POST, //
-            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/message", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String message(HttpEntity<MessageEvent> httpEntity) {
-        MessageEvent messageEvent = httpEntity.getBody();
+    public String message(@RequestBody MessageEvent httpEntity) {
+        MessageEvent messageEvent = httpEntity;
         if (messageEvent != null) {
             String json = messageEvent.toString();
 
@@ -45,11 +40,10 @@ public class WebhookController implements Serializable {
         return "";
     }
 
-    @RequestMapping(value = "/status", method = RequestMethod.POST, //
-            consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/status", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String status(HttpEntity<MessageStatusEvent> httpEntity) {
-        MessageStatusEvent messageStatusEvent = httpEntity.getBody();
+    public String status(@RequestBody MessageStatusEvent httpEntity) {
+        MessageStatusEvent messageStatusEvent = httpEntity;
         if (messageStatusEvent != null) {
             String json = messageStatusEvent.toString();
 
