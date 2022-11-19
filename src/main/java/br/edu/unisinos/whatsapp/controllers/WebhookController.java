@@ -1,5 +1,6 @@
 package br.edu.unisinos.whatsapp.controllers;
 
+import br.edu.unisinos.whatsapp.aop.Log;
 import br.edu.unisinos.whatsapp.enums.DirectionEnum;
 import br.edu.unisinos.whatsapp.services.MessageService;
 import br.edu.unisinos.whatsapp.services.WebhookMessageService;
@@ -25,6 +26,7 @@ public class WebhookController implements Serializable {
 
     private final MessageService messageService;
 
+    @Log
     @PostMapping(value = "/message", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public String message(@RequestBody MessageEvent messageEvent) {
@@ -39,6 +41,7 @@ public class WebhookController implements Serializable {
         return "";
     }
 
+    @Log
     @PostMapping(value = "/status", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public String status(@RequestBody MessageStatusEvent messageStatusEvent) {

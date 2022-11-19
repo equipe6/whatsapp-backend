@@ -1,5 +1,6 @@
 package br.edu.unisinos.whatsapp.services;
 
+import br.edu.unisinos.whatsapp.aop.Log;
 import br.edu.unisinos.whatsapp.entities.WebhookMessage;
 import br.edu.unisinos.whatsapp.repositories.WebhookMessageRepository;
 import lombok.AccessLevel;
@@ -20,12 +21,14 @@ public class WebhookMessageService implements Serializable {
 
     private final transient WebhookMessageRepository webhookMessageRepository;
 
+    @Log
     public WebhookMessage save(String strWebhookMessage) {
         WebhookMessage webhookMessage = new WebhookMessage();
         webhookMessage.setContentBody(strWebhookMessage);
         return this.save(webhookMessage);
     }
 
+    @Log
     public WebhookMessage save(WebhookMessage webhookMessage) {
         return webhookMessageRepository.save(webhookMessage);
     }

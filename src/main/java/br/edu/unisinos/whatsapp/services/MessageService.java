@@ -1,5 +1,6 @@
 package br.edu.unisinos.whatsapp.services;
 
+import br.edu.unisinos.whatsapp.aop.Log;
 import br.edu.unisinos.whatsapp.entities.Message;
 import br.edu.unisinos.whatsapp.enums.DirectionEnum;
 import br.edu.unisinos.whatsapp.repositories.MessageRepository;
@@ -30,6 +31,7 @@ public class MessageService implements Serializable {
 
     private final transient MessageRepository messageRepository;
 
+    @Log
     public Message save(MessageEvent messageEvent, DirectionEnum direction) {
         Message message = new Message();
         message.setFrom(messageEvent.message.from);
@@ -40,6 +42,7 @@ public class MessageService implements Serializable {
         return this.save(message);
     }
 
+    @Log
     public Message save(String from, String to, String messageText, DirectionEnum direction) {
         Message message = new Message();
         message.setFrom(from);
@@ -50,11 +53,13 @@ public class MessageService implements Serializable {
         return this.save(message);
     }
 
+    @Log
     public Message save(Message message) {
         message.buildChannel();
         return this.messageRepository.save(message);
     }
 
+    @Log
     public Message sendWhatsappMessage(String from, String to, String messageText) {
         try (Client client = this.buildZenviaClient()) {
 
@@ -76,14 +81,17 @@ public class MessageService implements Serializable {
         return this.save(from, to, messageText, DirectionEnum.OUT);
     }
 
+    @Log
     public List<Message> listMessagesByChannel(String channel) {
         return this.messageRepository.findAllByChannelOrderByCreateDateTimeAsc(channel);
     }
 
+    @Log
     public List<String> listAllChannel() {
         return this.messageRepository.findDistinctChannel();
     }
 
+    @Log
     Client buildZenviaClient() {
         return new Client("os-SvXSoEHI3ECnG5-kxn1EX11qrwexxURhI");
     }

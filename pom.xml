@@ -97,6 +97,12 @@
             <artifactId>flyway-core</artifactId>
         </dependency>
 
+        <!-- AOP -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+
         <!--  Hibernate validator -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

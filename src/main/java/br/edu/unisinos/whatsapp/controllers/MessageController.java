@@ -1,5 +1,6 @@
 package br.edu.unisinos.whatsapp.controllers;
 
+import br.edu.unisinos.whatsapp.aop.Log;
 import br.edu.unisinos.whatsapp.dtos.MessageSendDto;
 import br.edu.unisinos.whatsapp.entities.Message;
 import br.edu.unisinos.whatsapp.services.MessageService;
@@ -22,6 +23,7 @@ public class MessageController implements Serializable {
 
     private final MessageService messageService;
 
+    @Log
     @PostMapping(value = "/send/{phoneNumber}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public String send(@RequestBody MessageSendDto messageSendDto, @PathVariable("phoneNumber") String phoneNumber) {
@@ -32,12 +34,14 @@ public class MessageController implements Serializable {
         return "";
     }
 
+    @Log
     @GetMapping(value = "/channel/{channel}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public List<Message> listMessagesByChannel(@PathVariable("channel") String channel) {
         return messageService.listMessagesByChannel(channel);
     }
 
+    @Log
     @GetMapping(value = "/channels", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public List<String> listAllChannel() {
